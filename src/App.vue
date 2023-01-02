@@ -1,15 +1,14 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <router-view />
+    <tab-bar v-if="!$route.meta.isHide" />
+  </div>
 </template>
 
 <script>
-import { http } from "@/plugins/axios";
+import TabBar from './components/tab-bar';
 export default {
-  async mounted() {
-    const res = await http({ url: "/home/banner" });
-    console.log(res);
-  },
+  name: 'App',
+  components: { TabBar },
 };
 </script>
-
-<style lang="less"></style>
